@@ -1,0 +1,42 @@
+{
+  "name": "car-dealership-inventory-system",
+  "version": "1.0.0",
+  "description": "RESTful API for car dealership inventory management, vehicle tracking, and automated reporting.",
+  "keywords": [
+    "dealership",
+    "automotive",
+    "car-inventory",
+    "vehicle-management",
+    "fleet-management",
+    "crud",
+    "api",
+    "filtering",
+    "sorting",
+    "express",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/Jad229/car-dealership-inventory-system#readme",
+  "bugs": {
+    "url": "https://github.com/Jad229/car-dealership-inventory-system/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jad229/car-dealership-inventory-system.git"
+  },
+  "license": "MIT",
+  "author": "Justin D.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
