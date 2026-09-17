@@ -11,8 +11,8 @@ Format: date — title, then Context / Decision / Why / Trade-off.
 
 **Decision:** Intentionally omit `phone` from `staff`.
 
-**Why:** Staff contact is handled internally (email is sufficient for the
-app's purposes). Not an oversight.
+**Why:** Email is sufficient for the
+app's purposes. Not an oversight.
 
 **Trade-off:** If staff contact info is ever needed, this needs a schema
 change. Revisit only if a real requirement appears.
@@ -40,7 +40,7 @@ small to match actual use.
 
 ---
 
-## 2026-09-16 — Model A reservations: one active hold per vehicle
+## 2026-09-16 — reservations: one active hold per vehicle
 
 **Context:** Two possible models:
 
