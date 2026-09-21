@@ -54,3 +54,13 @@ CREATE UNIQUE INDEX one_active_reservation_per_vehicle
   ON reservations(vehicle_id)
   WHERE status IN ('pending','confirmed');
 ```
+
+## 2026-09-21 — /api/vehicles: case matching for query parameters
+
+**Context:** database stores models and makes Capitalized and with hyphens. People arent
+always going to match the case perfectly
+
+**Decision:** Query params match the database using ILIKE instead of =
+
+**Why:** The filtering is much more flexible less coding on trying to make sure the cases match.
+on the frontend someone could type `ford` or `Ford` or `fOrD` and still get a list of all ford make vehicles
