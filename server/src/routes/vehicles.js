@@ -81,3 +81,41 @@ export const getVehicleDetails = async (req, res) => {
         return res.status(500).json({ message: "Could not fetch vehicle details", error })
     }
 }
+
+export const updateVehicle = async (req, res) => {
+    const { vehicleId } = req.params
+    const updates = req.body // e.g {make = "Ford", model = "mustang", color = "red"}
+
+    // A filter to prevent any columns that don't have a value getting passed into my query
+    //  e.g {make = "Ford", model = undefined, color = "red", asking_price = null} model won't make it past.
+    // i.e [make, color] would be the final result
+    const columnsToUpdate = Object.keys(updates).filter(key => updates[key] !== undefined && updates[key] !== "");
+
+    // Handle empty request bodies after checking if they are not undefined
+    if (columnsToUpdate.length === 0) {
+        return res.status(400).json({ error: "No fields provided for update" });
+    }
+
+    // Build our SET clause map every column to 'make = $1, model = $2
+    const setClause = columnsToUpdate.map((col, index) => `${col} = $${index + 1}`).join(', ')
+
+    // Get the values for the parameterized values.
+    const valuesToUpdate = columnsToUpdate.map(col => updates[col])
+
+    // Add the id to parameterized values as last value for my WHERE clause
+    valuesToUpdate.push(vehicleId)
+
+    const sql = `
+    UPDATE vehicles
+    SET ${setClause}
+    WHERE vehicle_id = $${valuesToUpdate.length}
+    RETURNING *`
+    try {
+        const vehicleResult = await query(sql, valuesToUpdate)
+        res.status(200).json(vehicleResult.rows)
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({ message: "Could not update vehicle details", error })
+    }
+
+}
