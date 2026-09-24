@@ -67,3 +67,17 @@ export const createVehicle = async (req, res) => {
         return res.status(500).json({ message: "Could not create vehicle", error });
     }
 }
+
+export const getVehicleDetails = async (req, res) => {
+    const { vehicleId } = req.params
+
+    try {
+        const sql = `SELECT * FROM vehicles WHERE vehicle_id = $1`
+        const vehicleResult = await query(sql, [vehicleId])
+
+        res.status(200).json(vehicleResult.rows)
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({ message: "Could not fetch vehicle details", error })
+    }
+}

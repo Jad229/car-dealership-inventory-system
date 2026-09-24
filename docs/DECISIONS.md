@@ -64,3 +64,11 @@ always going to match the case perfectly
 
 **Why:** The filtering is much more flexible less coding on trying to make sure the cases match.
 on the frontend someone could type `ford` or `Ford` or `fOrD` and still get a list of all ford make vehicles
+
+## 2026-09-23 — /api/vehicles/vehicle:Id sending all columns to the frontend
+
+**Context:** this api route is currently sending all the details of the car including things the customer does not need to know such as purchase cost
+
+**Decision:** I currently am just sending the whole row
+
+**Why:** I currently don't know what details I want to show, so when I build the frontend and decide I can revisit this and only respond with the details I need.
