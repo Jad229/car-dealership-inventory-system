@@ -110,6 +110,7 @@ export const updateVehicle = async (req, res) => {
     SET ${setClause}
     WHERE vehicle_id = $${valuesToUpdate.length}
     RETURNING *`
+
     try {
         const vehicleResult = await query(sql, valuesToUpdate)
         res.status(200).json(vehicleResult.rows)
@@ -118,4 +119,20 @@ export const updateVehicle = async (req, res) => {
         return res.status(500).json({ message: "Could not update vehicle details", error })
     }
 
+}
+
+export const deleteVehicle = async (req, res) => {
+    const { vehicleId } = req.params
+
+    const sql = `DELETE FROM vehicles
+    WHERE vehicle_id = $1
+    RETURNING vehicle_id`
+
+    try {
+        const vehicleResult = await query(sql, [vehicleId])
+        res.status(200).json(vehicleResult.rows)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ message: "Could not delete vehicle", error })
+    }
 }

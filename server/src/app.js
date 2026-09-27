@@ -1,6 +1,6 @@
 import express, { json } from "express"
 import cors from "cors"
-import { createVehicle, getVehicleDetails, getVehicles, updateVehicle } from './routes/vehicles.js';
+import { createVehicle, getVehicleDetails, getVehicles, updateVehicle, deleteVehicle } from './routes/vehicles.js';
 
 const app = express();
 
@@ -11,5 +11,7 @@ app.get("/api/vehicles", getVehicles)
 app.post("/api/vehicles", createVehicle)
 app.get("/api/vehicles/:vehicleId", getVehicleDetails)
 app.patch("/api/vehicles/:vehicleId", updateVehicle)
+app.delete("/api/vehicles/:vehicleId", deleteVehicle)
 
 export default app;
+
