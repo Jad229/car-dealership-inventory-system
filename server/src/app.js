@@ -8,6 +8,7 @@ import {
   deleteVehicle,
 } from "./routes/vehicles.js";
 import { getVehicleByVin } from "./routes/vehicle-lookup.js";
+import { createCustomer } from "./routes/customers.js";
 
 const app = express();
 
