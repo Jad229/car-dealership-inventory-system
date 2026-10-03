@@ -18,3 +18,14 @@ export const createInquiry = async (req, res) => {
     return res.status(500).json({ message: "Could not create inquiry", error });
   }
 };
+
+export const getInquiries = async (req, res) => {
+  try {
+    const sql = `SELECT * FROM inquiries`;
+    const inquiries = await query(sql);
+    res.status(200).json(inquiries.rows);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Could not get inquiries", error });
+  }
+};

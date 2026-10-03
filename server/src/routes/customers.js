@@ -14,3 +14,14 @@ export const createCustomer = async (req, res) => {
       .json({ message: "Could not create customer", error });
   }
 };
+
+export const getCustomers = async (req, res) => {
+  try {
+    const sql = `SELECT * FROM customers`;
+    const customers = await query(sql);
+    res.status(200).json(customers.rows);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Could not get customers", error });
+  }
+};

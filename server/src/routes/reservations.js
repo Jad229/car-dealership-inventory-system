@@ -64,3 +64,16 @@ export const cancelReservation = async (req, res) => {
       .json({ message: "Could not cancel reservation", error });
   }
 };
+
+export const getReservations = async (req, res) => {
+  try {
+    const sql = `SELECT * FROM reservations`;
+    const reservations = await query(sql);
+    res.status(200).json(reservations.rows);
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ message: "Could not get reservations", error });
+  }
+};

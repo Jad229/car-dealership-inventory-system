@@ -8,10 +8,14 @@ import {
   deleteVehicle,
 } from "./routes/vehicles.js";
 import { getVehicleByVin } from "./routes/vehicle-lookup.js";
-import { createCustomer } from "./routes/customers.js";
+import { createCustomer, getCustomers } from "./routes/customers.js";
 import { createStaff } from "./routes/staff.js";
-import { createInquiry } from "./routes/inquiries.js";
-import { createReservation, cancelReservation } from "./routes/reservations.js";
+import { createInquiry, getInquiries } from "./routes/inquiries.js";
+import {
+  createReservation,
+  cancelReservation,
+  getReservations,
+} from "./routes/reservations.js";
 import { createSale, getSales } from "./routes/sales.js";
 
 const app = express();
@@ -30,6 +34,7 @@ app.delete("/api/vehicles/:vehicleId", deleteVehicle);
 app.get("/api/vehicle-lookup/:vin", getVehicleByVin);
 
 // Customers routes
+app.get("/api/customers", getCustomers);
 app.post("/api/customers", createCustomer);
 
 // Staff routes
@@ -37,11 +42,12 @@ app.post("/api/staff", createStaff);
 
 // Inquiries routes
 app.post("/api/inquiries", createInquiry);
-/* add get request for inquiries */
+app.get("/api/inquiries", getInquiries);
 
 // Reservations routes
 app.post("/api/reservations", createReservation);
 app.put("/api/reservations/:reservation_id", cancelReservation);
+app.get("/api/reservations", getReservations);
 
 // Sales routes
 app.post("/api/sales", createSale);
