@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import RecordRow from "../shared/RecordRow";
 
 const headers = [
     { label: 'Year', key: 'year' },
@@ -60,7 +61,6 @@ export default function InventoryTable() {
     return (
         <div className="w-full">
             <div className="flex mb-4 items-center justify-between p-6 shadow-md border border-gray-200 text-sm">
-                <div className="w-4 shrink-0" />
                 {headers.map(header => <VehicleCell key={header.key} value={header.label} />)}
             </div>
             <div className="text-start space-y-2">
@@ -73,24 +73,17 @@ export default function InventoryTable() {
 
 export const VehicleRow = ({ vin, make, model, year, mileage, asking_price, purchase_price, status, color }) => {
     return (
-        <div className="w-full flex text-center items-center justify-between p-6 shadow-md border border-gray-200 text-sm">
-            <div className="flex w-4 shrink-0 justify-center">
-                <span
-                    className={`size-2.5 rounded-full ${statusBadge[status] ?? 'bg-stone-300'}`}
-                    title={status}
-                    aria-label={status}
-                />
-            </div>
-            <div className="w-1/12">{year}</div>
-            <div className="w-1/12">{make}</div>
-            <div className="w-1/12">{model}</div>
-            <div className="w-1/12">{mileage}</div>
-            <div className="w-1/12">{formatter.format(asking_price)}</div>
-            <div className="w-1/12">{purchase_price}</div>
-            <div className={`w-1/12 p-0.5 rounded-full capitalize border border-stone-300 ${statusStyles[status] ?? 'bg-stone-100 text-stone-700'}`}>{status}</div>
-            <div className={`w-1/12 p-0.5 rounded-full border border-stone-300 ${colorStyles[color?.toLowerCase()] ?? 'bg-stone-100 text-stone-700'}`}>{color}</div>
-            <div className="w-1/12">{vin}</div>
-        </div>
+        <RecordRow statusClass={statusBadge[status] ?? 'bg-stone-300'}>
+            <span className="w-1/12">{year}</span>
+            <span className="w-1/12">{make}</span>
+            <span className="w-1/12">{model}</span>
+            <span className="w-1/12">{mileage}</span>
+            <span className="w-1/12">{formatter.format(asking_price)}</span>
+            <span className="w-1/12">{purchase_price}</span>
+            <span className={`w-1/12 p-0.5 rounded-full capitalize border border-stone-300 ${statusStyles[status] ?? 'bg-stone-100 text-stone-700'}`}>{status}</span>
+            <span className={`w-1/12 p-0.5 rounded-full border border-stone-300 ${colorStyles[color?.toLowerCase()] ?? 'bg-stone-100 text-stone-700'}`}>{color}</span>
+            <span className="w-1/12 truncate">{vin}</span>
+        </RecordRow>
     )
 }
 

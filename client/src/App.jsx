@@ -2,6 +2,9 @@ import { Routes, Route } from 'react-router-dom'
 import Sidebar from './components/Sidebar/Sidebar'
 import Dashboard from './components/Dashboard/Dashboard'
 import Inventory from './components/Inventory/Inventory'
+import Reservations from './components/Reservations/Reservations'
+import Inquiries from './components/Inquiries/Inquiries'
+import Customers from './components/Customers/Customers'
 
 function App() {
   return (
@@ -10,19 +13,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/inventory" element={<Inventory />} />
-        <Route path="/reservations" element={<Placeholder title="Reservations" />} />
-        <Route path="/inquiries" element={<Placeholder title="Inquiries" />} />
-        <Route path="/customers" element={<Placeholder title="Customers" />} />
+        <Route path="/reservations" element={<Reservations />} />
+        <Route path="/inquiries" element={<Inquiries />} />
+        <Route path="/customers" element={<Customers />} />
       </Routes>
     </main>
-  )
-}
-
-function Placeholder({ title }) {
-  return (
-    <div className="bg-white rounded-lg p-4 shadow min-h-[calc(100vh-2rem)]">
-      <h1 className="text-xl font-semibold text-stone-900">{title}</h1>
-    </div>
   )
 }
 
