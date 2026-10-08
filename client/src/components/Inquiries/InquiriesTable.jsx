@@ -51,7 +51,7 @@ export default function InquiriesTable() {
     )
 }
 
-const InquiryRow = ({ customer_id, vehicle_id, inquiry_date, status, notes }) => {
+const InquiryRow = ({ name, vehicle_id, inquiry_date, status, notes }) => {
     const date = new Date(inquiry_date).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
@@ -60,7 +60,7 @@ const InquiryRow = ({ customer_id, vehicle_id, inquiry_date, status, notes }) =>
 
     return (
         <RecordRow statusClass={statusBadge[status] ?? "bg-stone-300"}>
-            <span className="w-1/5">{customer_id}</span>
+            <span className="w-1/5">{name}</span>
             <span className="w-1/5">{vehicle_id}</span>
             <span className="w-1/5">{date}</span>
             <span className={`w-1/5 rounded-full border border-stone-300 p-0.5 capitalize ${statusStyles[status] ?? "bg-stone-100 text-stone-700"}`}>

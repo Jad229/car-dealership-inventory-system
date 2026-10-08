@@ -30,16 +30,18 @@ export default function SalesTable() {
             <div className="flex mb-4 items-center justify-between p-6 shadow-md border border-gray-200 text-sm">
                 {headers.map(header => <span className="text-center w-1/4" key={header.key}>{header.label}</span>)}
             </div>
-            {
-                sales.map(sale => (
-                    <SaleRow key={sale.sale_id} {...sale} />
-                ))
-            }
+            <div className="space-y-2">
+                {
+                    sales.map(sale => (
+                        <SaleRow key={sale.sale_id} {...sale} />
+                    ))
+                }
+            </div>
         </div>
     )
 }
 
-const SaleRow = ({ customer_id, vehicle_id, sale_date, sale_price }) => {
+const SaleRow = ({ name, vehicle_id, sale_date, sale_price }) => {
     const date = new Date(sale_date).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
@@ -47,7 +49,7 @@ const SaleRow = ({ customer_id, vehicle_id, sale_date, sale_price }) => {
     });
     return (
         <RecordRow>
-            <span className="w-1/4" title={customer_id}>{customer_id}</span>
+            <span className="w-1/4" title={name}>{name}</span>
             <span className="w-1/4" title={vehicle_id}>{vehicle_id}</span>
             <span className="w-1/4" title={date}>{date}</span>
             <span className="w-1/4" title={formatter.format(sale_price)}>{formatter.format(sale_price)}</span>

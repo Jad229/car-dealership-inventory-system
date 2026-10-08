@@ -41,11 +41,11 @@ export default function ReservationsTable() {
     )
 }
 
-const ReservationRow = ({ customer_id, vehicle_id, reservation_date, status }) => {
+const ReservationRow = ({ name, vehicle_id, reservation_date, status }) => {
     const date = new Date(reservation_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     return (
         <RecordRow statusClass={statusBadge[status] ?? "bg-stone-300"}>
-            <span className="w-1/4">{customer_id}</span>
+            <span className="w-1/4">{name}</span>
             <span className="w-1/4">{vehicle_id}</span>
             <span className="w-1/4">{date}</span>
             <span className="w-1/4">{status}</span>
