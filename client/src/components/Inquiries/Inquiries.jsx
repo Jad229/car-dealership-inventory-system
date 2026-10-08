@@ -1,4 +1,4 @@
-import MetricsOverview from "../Dashboard/MetricsOverview";
+import MetricsOverview from "../shared/MetricsOverview";
 import InquiriesTable from "./InquiriesTable";
 
 export default function Inquiries() {

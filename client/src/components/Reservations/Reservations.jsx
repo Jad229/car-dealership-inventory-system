@@ -1,4 +1,4 @@
-import MetricsOverview from "../Dashboard/MetricsOverview";
+import MetricsOverview from "../shared/MetricsOverview";
 import ReservationsTable from "./ReservationsTable";
 
 export default function Reservations() {

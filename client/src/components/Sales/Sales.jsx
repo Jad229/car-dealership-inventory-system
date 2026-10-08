@@ -1,11 +1,11 @@
 import MetricsOverview from "../shared/MetricsOverview";
-import CustomersTable from "./CustomersTable";
+import SalesTable from "./SalesTable";
 
-export default function Customers() {
+export default function Sales() {
     return (
         <div className="bg-white rounded-lg p-4 shadow min-h-[calc(100vh-2rem)]">
             <MetricsOverview />
-            <CustomersTable />
+            <SalesTable />
         </div>
     )
 }

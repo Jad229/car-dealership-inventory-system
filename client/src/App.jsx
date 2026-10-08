@@ -5,6 +5,7 @@ import Inventory from './components/Inventory/Inventory'
 import Reservations from './components/Reservations/Reservations'
 import Inquiries from './components/Inquiries/Inquiries'
 import Customers from './components/Customers/Customers'
+import Sales from './components/Sales/Sales'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/inquiries" element={<Inquiries />} />
         <Route path="/customers" element={<Customers />} />
+        <Route path="/sales" element={<Sales />} />
       </Routes>
     </main>
   )

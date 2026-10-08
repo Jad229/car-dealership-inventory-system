@@ -1,5 +1,5 @@
 import SearchBar from './SearchBar'
-import MetricsOverview from '../Dashboard/MetricsOverview'
+import MetricsOverview from '../shared/MetricsOverview'
 import InventoryTable from './InventoryTable'
 export default function Inventory() {
     return (
