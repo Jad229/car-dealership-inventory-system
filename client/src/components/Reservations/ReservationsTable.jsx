@@ -16,7 +16,7 @@ const headers = [
     { label: 'Status', key: 'status' },
 ]
 
-export default function ReservationsTable() {
+export default function ReservationsTable({ refreshKey }) {
     const [reservations, setReservations] = useState([]);
 
     useEffect(() => {
@@ -26,8 +26,7 @@ export default function ReservationsTable() {
             setReservations(data);
         }
         fetchReservations();
-    }, []);
-    console.log(reservations);
+    }, [refreshKey]);
     return (
         <div className="w-full">
             <div className="flex mb-4 items-center justify-between p-6 shadow-md border border-gray-200 text-sm">
@@ -35,7 +34,7 @@ export default function ReservationsTable() {
                 {headers.map(header => <span className="text-center w-1/4" key={header.key}>{header.label}</span>)}
             </div>
             <div className="text-start space-y-2">
-                {reservations.map(reservation => <ReservationRow key={reservation.reservatuib_id} {...reservation} />)}
+                {reservations.map(reservation => <ReservationRow key={reservation.reservation_id} {...reservation} />)}
             </div>
         </div>
     )

@@ -21,7 +21,7 @@ export const createInquiry = async (req, res) => {
 
 export const getInquiries = async (req, res) => {
   try {
-    const sql = `SELECT c.name, i.vehicle_id, i.inquiry_date, i.status, i.notes FROM inquiries AS i
+    const sql = `SELECT i.inquiry_id, c.name, i.vehicle_id, i.inquiry_date, i.status, i.notes FROM inquiries AS i
     JOIN customers AS c ON i.customer_id = c.customer_id`;
     const inquiries = await query(sql);
     res.status(200).json(inquiries.rows);

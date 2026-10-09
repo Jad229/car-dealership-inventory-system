@@ -23,7 +23,7 @@ const statusStyles = {
     cancelled: "bg-red-300 text-red-900",
 }
 
-export default function InquiriesTable() {
+export default function InquiriesTable({ refreshKey }) {
     const [inquiries, setInquiries] = useState([]);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function InquiriesTable() {
             setInquiries(data);
         }
         fetchInquiries();
-    }, []);
+    }, [refreshKey]);
 
     return (
         <div className="w-full overflow-x-auto">

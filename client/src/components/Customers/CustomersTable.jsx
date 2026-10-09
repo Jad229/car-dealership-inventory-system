@@ -7,7 +7,7 @@ const headers = [
     { label: "Phone", key: "phone" },
 ]
 
-export default function CustomersTable() {
+export default function CustomersTable({ refreshKey }) {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function CustomersTable() {
             setCustomers(data);
         }
         fetchCustomers();
-    }, []);
+    }, [refreshKey]);
 
     return (
         <div className="w-full overflow-x-auto">

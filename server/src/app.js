@@ -17,6 +17,7 @@ import {
   getReservations,
 } from "./routes/reservations.js";
 import { createSale, getSales } from "./routes/sales.js";
+import getDashboardData from "./routes/dashboard.js";
 
 const app = express();
 
@@ -52,5 +53,8 @@ app.get("/api/reservations", getReservations);
 // Sales routes
 app.post("/api/sales", createSale);
 app.get("/api/sales", getSales);
+
+// Dashboard routes
+app.get("/api/dashboard", getDashboardData);
 
 export default app;

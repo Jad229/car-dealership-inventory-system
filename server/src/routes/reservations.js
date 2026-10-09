@@ -27,7 +27,7 @@ export const createReservation = async (req, res) => {
     await query(setReservedSql, [vehicle_id]);
 
     // Create the reservation
-    const createReservationSql = `INSERT INTO reservations (customer_id, vehicle_id, reservation_date, status, notes) VALUES ($1, $2, $3, $4, $5) RETURNING reservation_id, customer_id, vehicle_id, reservation_date, status, notes`;
+    const createReservationSql = `INSERT INTO reservations (customer_id, vehicle_id, reservation_date, status) VALUES ($1, $2, $3, $4) RETURNING reservation_id, customer_id, vehicle_id, reservation_date, status`;
     const reservationResult = await query(createReservationSql, [
       customer_id,
       vehicle_id,
@@ -67,7 +67,7 @@ export const cancelReservation = async (req, res) => {
 
 export const getReservations = async (req, res) => {
   try {
-    const sql = `SELECT c.name, r.vehicle_id, r.reservation_date, r.status FROM reservations AS r
+    const sql = `SELECT r.reservation_id, c.name, r.vehicle_id, r.reservation_date, r.status FROM reservations AS r
     JOIN customers AS c ON r.customer_id = c.customer_id`;
     const reservations = await query(sql);
     res.status(200).json(reservations.rows);
