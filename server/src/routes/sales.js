@@ -44,7 +44,7 @@ export const createSale = async (req, res) => {
 export const getSales = async (req, res) => {
   try {
     const salesResult =
-      await query(`SELECT c.name, s.vehicle_id, s.sale_date, s.sale_price FROM sales AS s
+      await query(`SELECT s.sale_id, c.name, s.vehicle_id, s.sale_date, s.sale_price FROM sales AS s
     JOIN customers AS c ON s.customer_id = c.customer_id`);
     res.status(200).json(salesResult.rows);
   } catch (error) {

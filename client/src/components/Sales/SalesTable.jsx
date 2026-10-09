@@ -13,7 +13,7 @@ const headers = [
     { label: "Price", key: "sale_price" },
 ]
 
-export default function SalesTable() {
+export default function SalesTable({ refreshKey }) {
     const [sales, setSales] = useState([]);
 
     useEffect(() => {
@@ -23,8 +23,7 @@ export default function SalesTable() {
             setSales(data);
         }
         fetchSales();
-        console.log(sales);
-    }, []);
+    }, [refreshKey]);
     return (
         <div>
             <div className="flex mb-4 items-center justify-between p-6 shadow-md border border-gray-200 text-sm">

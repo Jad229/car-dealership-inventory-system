@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import RecordRow from "../shared/RecordRow";
 
 // Headers for the inventory table
@@ -83,8 +84,9 @@ export default function InventoryTable({ query, refreshKey }) {
     )
 }
 
-export const VehicleRow = ({ vin, make, model, year, mileage, asking_price, purchase_cost, status, color }) => {
+export const VehicleRow = ({ vehicle_id, vin, make, model, year, mileage, asking_price, purchase_cost, status, color }) => {
     return (
+        <Link to={`/inventory/${vehicle_id}`} className="block cursor-pointer">
         <RecordRow statusClass={statusBadge[status] ?? 'bg-stone-300'}>
             <span className="w-1/12">{year}</span>
             <span className="w-1/12">{make}</span>
@@ -96,6 +98,7 @@ export const VehicleRow = ({ vin, make, model, year, mileage, asking_price, purc
             <span className={`w-1/12 p-0.5 rounded-full border border-stone-300 ${colorStyles[color?.toLowerCase()] ?? 'bg-stone-100 text-stone-700'}`}>{color}</span>
             <span className="w-1/12 truncate">{vin}</span>
         </RecordRow>
+        </Link>
     )
 }
 

@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Sidebar from './components/Sidebar/Sidebar'
 import Dashboard from './components/Dashboard/Dashboard'
 import Inventory from './components/Inventory/Inventory'
+import VehicleDetails from './components/Inventory/VehicleDetails'
 import Reservations from './components/Reservations/Reservations'
 import Inquiries from './components/Inquiries/Inquiries'
 import Customers from './components/Customers/Customers'
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/inventory/:vehicleId" element={<VehicleDetails />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/inquiries" element={<Inquiries />} />
         <Route path="/customers" element={<Customers />} />
