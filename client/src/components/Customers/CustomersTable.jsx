@@ -11,6 +11,7 @@ export default function CustomersTable({ refreshKey }) {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
+        // Fetch the customers from the API
         const fetchCustomers = async () => {
             const response = await fetch("http://localhost:3000/api/customers");
             const data = await response.json();

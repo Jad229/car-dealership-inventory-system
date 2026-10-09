@@ -10,9 +10,11 @@ export default function Dashboard() {
     const [metrics, setMetrics] = useState(null);
 
     useEffect(() => {
+        // Fetch the dashboard metrics from the API
         const fetchDashboard = async () => {
             const response = await fetch("http://localhost:3000/api/dashboard");
             const data = await response.json();
+            // Set the dashboard metrics
             setMetrics(data);
         };
         fetchDashboard();

@@ -4,8 +4,10 @@ import MetricsOverview from "../shared/MetricsOverview";
 import InventoryTable from "./InventoryTable";
 
 export default function Inventory() {
-    // Query state for the inventory table
+    // This is used to force a re-render of the inventory table when a vehicle is created
     const [refreshKey, setRefreshKey] = useState(0);
+
+    // Query state for the inventory table
     const [query, setQuery] = useState({
         search: "",
         make: "",

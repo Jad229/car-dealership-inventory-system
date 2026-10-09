@@ -4,6 +4,8 @@ import CustomersTable from "./CustomersTable";
 import AddCustomer from "./AddCustomer";
 
 export default function Customers() {
+    // State used for refreshing the customers table
+    // This is used to force a re-render of the customers table when a customer is created
     const [refreshKey, setRefreshKey] = useState(0);
 
     return (
